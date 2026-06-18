@@ -1,0 +1,22 @@
+class Solution {
+
+    public String encode(List<String> strs) {
+        StringBuilder sb=new StringBuilder();
+        for(String s:strs){sb.append(s.length()+"#");sb.append(s);}
+        return sb.toString();
+    }
+
+    public List<String> decode(String str) {
+        List<String>ans=new ArrayList<>();
+        int i=0;
+        // System.out.print(str);
+        // char ch[]=str.
+        while(i<str.length()){
+            int j=i;
+            while(j<str.length()&&Character.isDigit(str.charAt(j)))j++;
+            int len=Integer.parseInt(str.substring(i,j));
+            ans.add(str.substring(j+1,j+len+1));
+            i=j+len+1;
+        }return ans;
+    }
+}
